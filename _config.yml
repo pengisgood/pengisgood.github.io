@@ -13,7 +13,7 @@ timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://pengisgood.github.io
+url: http://codinglife.tech
 root: /
 permalink: :year/:month/:title/
 permalink_defaults:
@@ -81,5 +81,5 @@ theme: next
 deploy:
   type: git
   repo: https://github.com/pengisgood/pengisgood.github.io.git
-  branch: release
+  branch: master
   message: "Blog updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
