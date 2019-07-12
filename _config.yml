@@ -13,7 +13,7 @@ timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://codinglife.tech
+url: codinglife.tech
 root: /
 permalink: :year/:month/:title/
 permalink_defaults:
@@ -79,7 +79,15 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: https://github.com/pengisgood/pengisgood.github.io.git
-  branch: master
-  message: "Blog updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
+  - type: git
+    repo: https://github.com/pengisgood/pengisgood.github.io.git
+    branch: master
+    message: "Blog updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
+  - type: leancloud_counter_security_sync
+
+leancloud_counter_security:
+  enable_sync: true
+  app_id: kDs6CyreyacEcz1rUvVWOK2q-gzGzoHsz
+  app_key: RBtnRQcKMaS1QFsC6IqlX6Vy
+  username: maxpeng
+  password: 

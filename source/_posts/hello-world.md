@@ -13,6 +13,8 @@ $ hexo new "My New Post"
 
 More info: [Writing](https://hexo.io/docs/writing.html)
 
+<!-- more -->
+
 ### Run server
 
 ``` bash
@@ -36,3 +38,9 @@ $ hexo deploy
 ```
 
 More info: [Deployment](https://hexo.io/docs/deployment.html)
+
+```java
+public static void main(String[] args) {
+  System.out.println("hello world");
+}
+```
