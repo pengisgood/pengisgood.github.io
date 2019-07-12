@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://codinglife.tech/"/>
+  <link href="codinglife.tech/"/>
   <updated>2019-07-11T15:51:03.719Z</updated>
-  <id>http://codinglife.tech/</id>
+  <id>codinglife.tech/</id>
   
   <author>
     <name>Max Peng</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://codinglife.tech/2019/07/hello-world/"/>
-    <id>http://codinglife.tech/2019/07/hello-world/</id>
+    <link href="codinglife.tech/2019/07/hello-world/"/>
+    <id>codinglife.tech/2019/07/hello-world/</id>
     <published>2019-07-11T03:18:39.829Z</published>
     <updated>2019-07-11T15:51:03.719Z</updated>
     
