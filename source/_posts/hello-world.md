@@ -5,8 +5,6 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 
 ## Quick Start
 
-{% qnimg beian-logo.png title:'备案图标' %}
-
 ### Create a new post
 
 ``` bash
@@ -40,9 +38,3 @@ $ hexo deploy
 ```
 
 More info: [Deployment](https://hexo.io/docs/deployment.html)
-
-```java
-public static void main(String[] args) {
-  System.out.println("hello world");
-}
-```
