@@ -1,3 +1,4 @@
 [
 {"title":"Hello World","url":"/2019/07/hello-world/"},
+{"title":"在MySQL中使用LAST_INSERT_ID获取唯一自增序列","url":"/2019/07/implement-sequence-with-mysql-last-insert-id/"},
 ]

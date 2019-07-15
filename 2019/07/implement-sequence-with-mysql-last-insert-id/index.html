@@ -111,13 +111,11 @@
 <meta property="og:site_name" content="Coding Life">
 <meta property="og:description" content="一般如果遇到生成全局唯一的自增ID的需求时，往往第一反应都是直接利用数据的Sequence对象，简单，直接了当。但是MySQL偏偏不支持Sequence对象，那我们该如何是好呢？ 什么是SequenceSequence也叫做序列，一般用做表的主键，或者一些项目的编号等。一般具有以下几个特点：  全表唯一 自增 不一定严格连续（中间由于事务的回滚可能会出现洞，比如1，2，3，5，6）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-15T15:05:18.438Z">
+<meta property="og:updated_time" content="2019-07-15T15:44:59.356Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在MySQL中使用LAST_INSERT_ID获取唯一自增序列">
 <meta name="twitter:description" content="一般如果遇到生成全局唯一的自增ID的需求时，往往第一反应都是直接利用数据的Sequence对象，简单，直接了当。但是MySQL偏偏不支持Sequence对象，那我们该如何是好呢？ 什么是SequenceSequence也叫做序列，一般用做表的主键，或者一些项目的编号等。一般具有以下几个特点：  全表唯一 自增 不一定严格连续（中间由于事务的回滚可能会出现洞，比如1，2，3，5，6）">
 
-
-  
 
 
   <link rel="alternate" href="/atom.xml" title="Coding Life" type="application/atom+xml">
@@ -411,7 +409,7 @@
                 
               
 
-              <time title="创建时间：2019-07-15 20:03:02 / 修改时间：23:05:18" itemprop="dateCreated datePublished" datetime="2019-07-15T20:03:02+08:00">2019-07-15</time>
+              <time title="创建时间：2019-07-15 20:03:02 / 修改时间：23:44:59" itemprop="dateCreated datePublished" datetime="2019-07-15T20:03:02+08:00">2019-07-15</time>
             </span>
           
 
@@ -525,8 +523,7 @@
 
 <p>这样每次都能获取自增之后的值了，但是也有例外的情况。比如两个人同时在获取新的值，A先做了update操作，然后B也做了update操作，然后A的操作由于某种原因回滚了，B的操作成功了，此时序列中间就会出现一个<code>洞</code>。虽然不是严格连续的，但是在大多数业务场景中，已经满足要求了。</p>
 <p><strong>还需要注意的是</strong>，如果<code>seq_type</code>或者<code>year</code>条件不满足，那么这里的<code>SELECT LAST_INSERT_ID();</code>就会始终返回上一次的值，可能会导致意想不到的的错误。</p>
-<p>##LAST_INSERT_ID() vs. MAX()</p>
-<p><code>LAST_INSERT_ID()</code>是以数据库连接为基础的，即使有多个人同时通过多个连接获取Sequence也不会有问题，每个客户端会获取到属于他自己的序列号，不用担心会受到其他客户端的影响，或者影响其他客户端。在这种情况下，<code>MAX()</code>恐怕就不工作了。</p>
+<h2 id="LAST-INSERT-ID-vs-MAX"><a href="#LAST-INSERT-ID-vs-MAX" class="headerlink" title="LAST_INSERT_ID() vs. MAX()"></a>LAST_INSERT_ID() vs. MAX()</h2><p><code>LAST_INSERT_ID()</code>是以数据库连接为基础的，即使有多个人同时通过多个连接获取Sequence也不会有问题，每个客户端会获取到属于他自己的序列号，不用担心会受到其他客户端的影响，或者影响其他客户端。在这种情况下，<code>MAX()</code>恐怕就不工作了。</p>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><blockquote>
 <ul>
 <li><a href="https://www.percona.com/community-blog/2018/10/12/generating-identifiers-auto_increment-sequence/" target="_blank" rel="noopener">https://www.percona.com/community-blog/2018/10/12/generating-identifiers-auto_increment-sequence/</a></li>
@@ -844,7 +841,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Sequence"><span class="nav-number">1.</span> <span class="nav-text">什么是Sequence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何在MySQL中模拟Sequence"><span class="nav-number">2.</span> <span class="nav-text">如何在MySQL中模拟Sequence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LAST-INSERT-ID函数"><span class="nav-number">2.1.</span> <span class="nav-text">LAST_INSERT_ID函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取自增序列"><span class="nav-number">2.2.</span> <span class="nav-text">获取自增序列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">3.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Sequence"><span class="nav-number">1.</span> <span class="nav-text">什么是Sequence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何在MySQL中模拟Sequence"><span class="nav-number">2.</span> <span class="nav-text">如何在MySQL中模拟Sequence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LAST-INSERT-ID函数"><span class="nav-number">2.1.</span> <span class="nav-text">LAST_INSERT_ID函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取自增序列"><span class="nav-number">2.2.</span> <span class="nav-text">获取自增序列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LAST-INSERT-ID-vs-MAX"><span class="nav-number">3.</span> <span class="nav-text">LAST_INSERT_ID() vs. MAX()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
 
           </div>
