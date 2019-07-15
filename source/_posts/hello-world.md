@@ -5,6 +5,8 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 
 ## Quick Start
 
+{% qnimg beian-logo.png title:'备案图标' %}
+
 ### Create a new post
 
 ``` bash

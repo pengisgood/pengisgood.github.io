@@ -91,3 +91,23 @@ leancloud_counter_security:
   app_key: RBtnRQcKMaS1QFsC6IqlX6Vy
   username: maxpeng
   password: 
+
+qiniu:
+  offline: false
+  sync: true
+  bucket: coding_life
+  secret_file: qiniu_secret.json
+  # access_key: 
+  # secret_key: 
+  dirPrefix: static
+  urlPrefix: http://puo0ec517.bkt.clouddn.com/static
+  local_dir: cdn
+  update_exist: true
+  # up_host: http://upload.qiniu.com
+  image: 
+    folder: images
+    extend: 
+  js:
+    folder: js
+  css:
+    folder: css
