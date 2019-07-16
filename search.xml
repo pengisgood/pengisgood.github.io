@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[在MySQL中使用LAST_INSERT_ID获取唯一自增序列]]></title>
+    <url>%2F2019%2F07%2Fimplement-sequence-with-mysql-last-insert-id%2F</url>
+    <content type="text"><![CDATA[一般如果遇到生成全局唯一的自增ID的需求时，往往第一反应都是直接利用数据的Sequence对象，简单，直接了当。但是MySQL偏偏不支持Sequence对象，那我们该如何是好呢？ 什么是SequenceSequence也叫做序列，一般用做表的主键，或者一些项目的编号等。一般具有以下几个特点： 全表唯一 自增 不一定严格连续（中间由于事务的回滚可能会出现洞，比如1，2，3，5，6） 在常见的几种数据库中，Oracle、SQL Server都内置有Sequence对象，具体用法就不在此赘述了。在本文中我们来讨论一下如何在原生不支持Sequence的MySQL（目前最新的大版本为8.0）中模拟出Sequence的效果。 如何在MySQL中模拟SequenceMySQL中的auto_increment一般是用来生成表的主键，本身能够生成自增的唯一ID，但是一张表只能有一个列带有auto_increment属性。在实际项目中，我们可能需要不止一种序列号，比如项目编号（PROJ-001，PROJ-002…）、发票编号（INV-0001，INV-0002…），订单编号（ORD-0001，ORD-0002…）等等，下面将通过auto_increment和LAST_INSERT_ID相结合实现该功能。 LAST_INSERT_ID函数该函数有两种形式：LAST_INSERT_ID(), LAST_INSERT_ID(expr)。无参的形式会返回最近一次执行INSERT语句时auto_increment的值；带expr的形式会返回表达式的值，并且该值会被记住，在下一次调用LAST_INSERT_ID()时也返回该值。下面我们来看一个例子。 首先创建一张表： 1234CREATE TABLE user ( id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50) NOT NULL); 然后插入两条数据： 1234INSERT INTO user(name) VALUES(&apos;张三&apos;);INSERT INTO user(name) VALUES(&apos;李四&apos;);SELECT LAST_INSERT_ID(); 此时得到的结果是2。 注意：如果是一条语句插入多条值，则返回的是插入第一条时自动生成的ID，而不是最后一条的。 比如我们再插入三条数据，不过换个写法： 123456INSERT INTO user(name) VALUES(&apos;王五&apos;), (&apos;赵六&apos;), (&apos;郑七&apos;);SELECT LAST_INSERT_ID(); 此时得到的结果是3，而不是5。 获取自增序列在实际的项目中我们完全可以换个方式，避免上面👆的情况，作为一个程序员，何必没有困难，制造困难为难自己呢？接着看下一个更加通用的例子。 创建另一张表并初始化数据： 12345678CREATE TABLE sequence ( id INT AUTO_INCREMENT PRIMARY KEY, seq_type VARCHAR(50) NOT NULL, year INT NOT NULL, current_val BIGINT NOT NULL);INSERT INTO sequence(seq_type, year, current_val) VALUES(&apos;INVOICE&apos;, 2019, 0); 每次在获取current_val之前，先通过LAST_INSERT_ID(current_val + 1)更新： 12345UPDATE sequence SET current_val = LAST_INSERT_ID(current_val + 1)WHERE seq_type = &apos;INVOICE&apos; AND year = 2019;SELECT LAST_INSERT_ID(); 这样每次都能获取自增之后的值了，但是也有例外的情况。比如两个人同时在获取新的值，A先做了update操作，然后B也做了update操作，然后A的操作由于某种原因回滚了，B的操作成功了，此时序列中间就会出现一个洞。虽然不是严格连续的，但是在大多数业务场景中，已经满足要求了。 还需要注意的是，如果seq_type或者year条件不满足，那么这里的SELECT LAST_INSERT_ID();就会始终返回上一次的值，可能会导致意想不到的的错误。 LAST_INSERT_ID() vs. MAX()LAST_INSERT_ID()是以数据库连接为基础的，即使有多个人同时通过多个连接获取Sequence也不会有问题，每个客户端会获取到属于他自己的序列号，不用担心会受到其他客户端的影响，或者影响其他客户端。在这种情况下，MAX()恐怕就不能正常工作了。 参考链接 https://www.percona.com/community-blog/2018/10/12/generating-identifiers-auto_increment-sequence/ https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id http://www.mysqltutorial.org/mysql-last_insert_id.aspx]]></content>
+      <categories>
+        <category>database</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2019%2F07%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[categories]]></title>
+    <url>%2Fcategories%2Findex.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[关于我]]></title>
+    <url>%2Fabout%2Findex.html</url>
+    <content type="text"><![CDATA[简历更新中…]]></content>
+  </entry>
+</search>
