@@ -111,3 +111,10 @@ qiniu:
     folder: js
   css:
     folder: css
+
+search:
+  path: search.xml
+  field: all
+  format: html
+  limit: 10000
+  content: true
