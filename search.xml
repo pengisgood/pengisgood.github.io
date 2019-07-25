@@ -31,4 +31,9 @@
     <url>%2Fabout%2Findex.html</url>
     <content type="text"><![CDATA[简历更新中…]]></content>
   </entry>
+  <entry>
+    <title></title>
+    <url>%2F404%2F404.html</url>
+    <content type="text"><![CDATA[]]></content>
+  </entry>
 </search>

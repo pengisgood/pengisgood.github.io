@@ -43,6 +43,8 @@
 
 
 
+  <meta name="msvalidate.01" content="618429658AD1F5F32CCBCCC0B0FBC368">
+
 
 
 
@@ -606,6 +608,15 @@
                   
                     
                   
+                  <a href="https://www.facebook.com/pengisgood" title="Facebook &rarr; https://www.facebook.com/pengisgood" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
                   <a href="https://stackoverflow.com/story/maxpeng" title="StackOverflow &rarr; https://stackoverflow.com/story/maxpeng" rel="noopener" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i></a>
                 </span>
               
@@ -625,6 +636,20 @@
           
 
           
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://hanpanpan200.github.io/" title="http://hanpanpan200.github.io/" rel="noopener" target="_blank">Grace Han</a>
+                  </li>
+                
+              </ul>
+            </div>
           
 
           
@@ -646,7 +671,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">鄂ICP备xxx号 </a>&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">鄂ICP备19018329号 </a>&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>
@@ -774,13 +799,50 @@
   
 
   
+  
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  <script>
+    ;((d, w) => {
+      loadThree = () => {
+        let s = d.createElement('script');
+        s.src = '//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/three.min.js';
+        d.body.appendChild(s);
+      }
+      let styles = ['//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/three-waves.min.js', '', ''];
+      loadStyle = () => {
+        styles.forEach(x => {
+          if (x !== '') {
+            let s = d.createElement('script');
+            s.src = x;
+            d.body.appendChild(s);
+          }
+        })
+      }
+      w.addEventListener('DOMContentLoaded', loadThree);
+      w.addEventListener('load', loadStyle);
+    })(document, window);
+  </script>
+
 
   
 
   
   
 
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+
+<script src="//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js"></script>
 
 <script>
   var GUEST = ['nick', 'mail', 'link'];
