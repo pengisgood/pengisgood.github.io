@@ -64,3 +64,8 @@ JVM规范中并未严格要求要对该区域进行垃圾回收，但是HotSpot�
 ## 直接内存<sup>*</sup>
 
 直接内存不受虚拟机参数的控制，在NIO中有一种基于通道（Channel）与缓冲区（Buffer)的I/O方式，它可以通过Native方法在堆外分配内存，然后通过DirectByteBuffer对象来引用这块内存。因为避免了在Java堆和Native堆之间来回复制数据，从而在某些场景中能够得到性能的提升。一旦使用的直接内存超过了物理内存的总和，则会抛出`OutOfMemoryError`异常。
+
+## 参考链接
+
+> * https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.5
+> * https://book.douban.com/subject/24722612/
