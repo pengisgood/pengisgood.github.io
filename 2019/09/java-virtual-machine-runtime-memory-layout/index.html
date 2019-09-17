@@ -120,7 +120,7 @@
 <meta property="og:description" content="在学习 Java 虚拟机（后面简称：JVM）中的垃圾回收机制（GC）之前，先需要了解 在 JVM 中的 Java 程序（class 文件）加载到内存之后到底是怎么存的。在阅读了 JVM规范和周志明的《深入理解Java虚拟机（第2版）》之后，总结一下JVM中的内存划分以及各个区域的作用。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://codinglife.tech/images/jvm-memory-layout.png">
-<meta property="og:updated_time" content="2019-09-17T08:51:44.781Z">
+<meta property="og:updated_time" content="2019-09-17T09:12:56.300Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM 执行 Java 程序时的内存区域划分">
 <meta name="twitter:description" content="在学习 Java 虚拟机（后面简称：JVM）中的垃圾回收机制（GC）之前，先需要了解 在 JVM 中的 Java 程序（class 文件）加载到内存之后到底是怎么存的。在阅读了 JVM规范和周志明的《深入理解Java虚拟机（第2版）》之后，总结一下JVM中的内存划分以及各个区域的作用。">
@@ -487,7 +487,7 @@
                 
               
 
-              <time title="创建时间：2019-09-17 10:28:03 / 修改时间：16:51:44" itemprop="dateCreated datePublished" datetime="2019-09-17T10:28:03+08:00">2019-09-17</time>
+              <time title="创建时间：2019-09-17 10:28:03 / 修改时间：17:12:56" itemprop="dateCreated datePublished" datetime="2019-09-17T10:28:03+08:00">2019-09-17</time>
             </span>
           
 
@@ -603,6 +603,12 @@
 <li>如果本地方法栈设置为可扩展的并且无法再获取更多内存时，则会抛出<code>OutOfMemoryError</code>异常。</li>
 </ul>
 <h2 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存*"></a>直接内存<sup>*</sup></h2><p>直接内存不受虚拟机参数的控制，在NIO中有一种基于通道（Channel）与缓冲区（Buffer)的I/O方式，它可以通过Native方法在堆外分配内存，然后通过DirectByteBuffer对象来引用这块内存。因为避免了在Java堆和Native堆之间来回复制数据，从而在某些场景中能够得到性能的提升。一旦使用的直接内存超过了物理内存的总和，则会抛出<code>OutOfMemoryError</code>异常。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><blockquote>
+<ul>
+<li><a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.5" target="_blank" rel="noopener">https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.5</a></li>
+<li><a href="https://book.douban.com/subject/24722612/" target="_blank" rel="noopener">https://book.douban.com/subject/24722612/</a></li>
+</ul>
+</blockquote>
 
       
     </div>
@@ -980,7 +986,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序计数器"><span class="nav-number">1.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java虚拟机栈"><span class="nav-number">2.</span> <span class="nav-text">Java虚拟机栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆"><span class="nav-number">3.</span> <span class="nav-text">堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法区"><span class="nav-number">4.</span> <span class="nav-text">方法区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时常量池"><span class="nav-number">5.</span> <span class="nav-text">运行时常量池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地方法栈"><span class="nav-number">6.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直接内存"><span class="nav-number">7.</span> <span class="nav-text">直接内存*</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序计数器"><span class="nav-number">1.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java虚拟机栈"><span class="nav-number">2.</span> <span class="nav-text">Java虚拟机栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆"><span class="nav-number">3.</span> <span class="nav-text">堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法区"><span class="nav-number">4.</span> <span class="nav-text">方法区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时常量池"><span class="nav-number">5.</span> <span class="nav-text">运行时常量池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地方法栈"><span class="nav-number">6.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直接内存"><span class="nav-number">7.</span> <span class="nav-text">直接内存*</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">8.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
 
           </div>
