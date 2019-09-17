@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://codinglife.tech/2019/09/java-virtual-machine-runtime-memory-layout/</loc>
+    
+    <lastmod>2019-09-17T08:51:44.781Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://codinglife.tech/404/404.html</loc>
     
     <lastmod>2019-07-16T07:54:02.919Z</lastmod>

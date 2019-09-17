@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codinglife.tech/"/>
-  <updated>2019-07-16T07:07:21.312Z</updated>
+  <updated>2019-09-17T08:51:44.781Z</updated>
   <id>https://codinglife.tech/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JVM 执行 Java 程序时的内存区域划分</title>
+    <link href="https://codinglife.tech/2019/09/java-virtual-machine-runtime-memory-layout/"/>
+    <id>https://codinglife.tech/2019/09/java-virtual-machine-runtime-memory-layout/</id>
+    <published>2019-09-17T02:28:03.000Z</published>
+    <updated>2019-09-17T08:51:44.781Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/jvm-memory-layout.png" alt="JVM Memory Layout"></p><p>在学习 Java 虚拟机（后面简称：<code>JVM</code>）中的垃圾回收机制（GC）之前，先需要了解 在 JVM 中的 Java 程序（class 文件）加载到内存之后到底是怎么存的。在阅读了 <a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.5" target="_blank" rel="noopener"><strong>JVM规范</strong></a>和周志明的<a href="https://book.douban.com/subject/24722612/" target="_blank" rel="noopener"><strong>《深入理解Java虚拟机（第2版）》</strong></a>之后，总结一下JVM中的内存划分以及各个区域的作用。</p><a id="more"></a><p>在JVM规范中定义了5种运行时的数据区域：程序计数器（Program Counter Register）、Java虚拟机栈（JVM Stacks）、堆（Heap）、方法区（Method Area）、运行时常量池（Runtime Constant Pool）、本地方法栈（Native Method Stack）。在周志明的书中还提到了直接内存（Direct Memory），它并不是JVM运行时数据区域的一部分，在JVM的规范中也没有相关的定义。下面分别来说明各自的用途。</p><h2 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h2><p>程序计数器，也叫PC Register。它的用途很单一，但是却是很多功能的基础。如果线程当前执行的是Native方法，那么寄存器里的值就是Undefined；如果线程当前执行的是非Native方法，那么寄存器里的值就是当前执行的JVM字节码指令的地址。像我们常用的分支、循环、跳转、异常处理、线程恢复等都依赖于它。</p><p>由于JVM支持多个线程同时执行，所以每个线程都有一个独立的程序计数器，各个线程互不影响，这类内存区域也称之为<strong>线程私有</strong>的。</p><h2 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h2><p>虚拟机栈也是<strong>线程私有</strong>的，随着一个线程的创建而创建，主要用来存储栈帧（Stack Frame）。什么是栈帧呢？在Java中，每个方法在执行时就会先创建一个栈帧并放入虚拟机栈中，在方法执行完毕时再从虚拟机栈中移除该栈帧。它主要用来存储局部变量表、操作数栈、动态链接、方法出口等信息。我们常说的堆（Heap）和栈（Stack）中的栈，指的就是虚拟机栈。</p><p>在JVM规范中并没有对虚拟机栈空间的大小做限制，可以设置为固定大小的，也可以设置为可扩展的。但是在规范中定义了两种异常情况：</p><ul><li>如果计算时请求的栈空间大于虚拟机栈的最大值，则会抛出<code>StackOverflowError</code>异常；</li><li>如果虚拟机栈设置为可扩展的并且无法再获取更多内存时，则会抛出<code>OutOfMemoryError</code>异常。</li></ul><h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>相比而言，堆在JVM管理的内存区域中属于最大的一块，随着虚拟机的启动而创建，用来存储所有的class实例和数组，所有<strong>线程共享</strong>这一区域，该区域也是垃圾回收的主要区域。虽然JVM规范中说所有的对象实例都在该区域分配空间，但是随着JIT技术的逐步发展，这一说法也不严谨了。</p><p>堆空间的大小也可以设置为固定大小，或者可扩展的。但不管是何种方式，规范中还是定义了一种异常场景：</p><ul><li>如果计算需要更多的堆空间而无法满足时，则会抛出<code>OutOfMemoryError</code>异常。</li></ul><h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><p>方法区和堆一样，也是随着虚拟机启动而创建，所有<strong>线程共享</strong>，主要用来存储被JVM加载的类信息、常量、静态变量等信息。</p><p>JVM规范中并未严格要求要对该区域进行垃圾回收，但是HotSpot虚拟机在垃圾回收的时候还是会考虑该区域，在分代垃圾回收中所说的“<strong>永久代</strong>”指的就是方法区。方法区的大小也可以设置为固定大小，或者可扩展的。但不管是何种方式，规范中还是定义了一种异常场景：</p><ul><li>如果计算需要更多的方法区空间而无法满足时，则会抛出<code>OutOfMemoryError</code>异常。</li></ul><h2 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h2><p>运行时常量池是方法区的一部分，用于存储编译期生成的各种字面量和符号引用。在Java中并不要求常量一定只有编译期才能产生，运行期间也可能将新的常量放入池中，例如<code>String</code>类的<code>intern()</code>方法。</p><p>每个运行时常量池都是随着一个类或者接口的创建而创建的。在规范中定义了一种异常场景：</p><ul><li>在创建一个类或者接口时，如果运行时的常量池无法分配到足够的空间时，则会抛出<code>OutOfMemoryError</code>异常。</li></ul><h2 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h2><p>本地方法栈和虚拟机栈类似，也是<strong>线程私有</strong>的，随着一个线程的创建而创建，只不过虚拟机栈是用来服务Java方法调用，而本地方法栈是用来服务本地方法调用的。</p><p>在JVM规范中并没有对本地方法栈空间的大小做限制，可以设置为固定大小的，也可以设置为可扩展的。在规范中也定义了两种异常情况：</p><ul><li>如果计算时请求的栈空间大于本地方法栈的最大值，则会抛出<code>StackOverflowError</code>异常；</li><li>如果本地方法栈设置为可扩展的并且无法再获取更多内存时，则会抛出<code>OutOfMemoryError</code>异常。</li></ul><h2 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存*"></a>直接内存<sup>*</sup></h2><p>直接内存不受虚拟机参数的控制，在NIO中有一种基于通道（Channel）与缓冲区（Buffer)的I/O方式，它可以通过Native方法在堆外分配内存，然后通过DirectByteBuffer对象来引用这块内存。因为避免了在Java堆和Native堆之间来回复制数据，从而在某些场景中能够得到性能的提升。一旦使用的直接内存超过了物理内存的总和，则会抛出<code>OutOfMemoryError</code>异常。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/images/jvm-memory-layout.png&quot; alt=&quot;JVM Memory Layout&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在学习 Java 虚拟机（后面简称：&lt;code&gt;JVM&lt;/code&gt;）中的垃圾回收机制（GC）之前，先需要了解 在 JVM 中的 Java 程序（class 文件）加载到内存之后到底是怎么存的。在阅读了 &lt;a href=&quot;https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.5&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;JVM规范&lt;/strong&gt;&lt;/a&gt;和周志明的&lt;a href=&quot;https://book.douban.com/subject/24722612/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;《深入理解Java虚拟机（第2版）》&lt;/strong&gt;&lt;/a&gt;之后，总结一下JVM中的内存划分以及各个区域的作用。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="https://codinglife.tech/categories/Java/"/>
+    
+    
+      <category term="JVM" scheme="https://codinglife.tech/tags/JVM/"/>
+    
+  </entry>
   
   <entry>
     <title>在MySQL中使用LAST_INSERT_ID获取唯一自增序列</title>
