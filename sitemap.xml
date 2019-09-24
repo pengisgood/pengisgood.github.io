@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://codinglife.tech/2019/09/manage-multiple-java-versions-on-mac/</loc>
+    
+    <lastmod>2019-09-24T08:25:06.477Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://codinglife.tech/2019/09/java-virtual-machine-runtime-memory-layout/</loc>
     
     <lastmod>2019-09-17T09:12:56.300Z</lastmod>

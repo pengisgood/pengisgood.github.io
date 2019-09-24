@@ -111,20 +111,20 @@
 
 
 
-  <meta name="description" content="在学习 Java 虚拟机（后面简称：JVM）中的垃圾回收机制（GC）之前，先需要了解 在 JVM 中的 Java 程序（class 文件）加载到内存之后到底是怎么存的。在阅读了 JVM规范和周志明的《深入理解Java虚拟机（第2版）》之后，总结一下JVM中的内存划分以及各个区域的作用。">
-<meta name="keywords" content="JVM">
+  <meta name="description" content="我的Mac上已经有一个JDK8的版本了，这不JDK13刚发布（2019-09-17），想快速的尝一尝鲜，就得安装多个版本的JDK了。这个对Node、Ruby、Python的使用者来说，已经不是个什么新鲜话题了，但是对于Java的使用者来说，似乎没有那么多的人受到过多版本的折磨（我是通过GitHub上nvm、rbenv、pyenv、jenv的Star数量臆测出这个结论的 :P）。">
+<meta name="keywords" content="jEnv,Homebrew,JDK">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JVM 执行 Java 程序时的内存区域划分">
-<meta property="og:url" content="https://codinglife.tech/2019/09/java-virtual-machine-runtime-memory-layout/index.html">
+<meta property="og:title" content="Mac上的JDK多版本管理">
+<meta property="og:url" content="https://codinglife.tech/2019/09/manage-multiple-java-versions-on-mac/index.html">
 <meta property="og:site_name" content="Coding Life">
-<meta property="og:description" content="在学习 Java 虚拟机（后面简称：JVM）中的垃圾回收机制（GC）之前，先需要了解 在 JVM 中的 Java 程序（class 文件）加载到内存之后到底是怎么存的。在阅读了 JVM规范和周志明的《深入理解Java虚拟机（第2版）》之后，总结一下JVM中的内存划分以及各个区域的作用。">
+<meta property="og:description" content="我的Mac上已经有一个JDK8的版本了，这不JDK13刚发布（2019-09-17），想快速的尝一尝鲜，就得安装多个版本的JDK了。这个对Node、Ruby、Python的使用者来说，已经不是个什么新鲜话题了，但是对于Java的使用者来说，似乎没有那么多的人受到过多版本的折磨（我是通过GitHub上nvm、rbenv、pyenv、jenv的Star数量臆测出这个结论的 :P）。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://codinglife.tech/images/jvm-memory-layout.png">
-<meta property="og:updated_time" content="2019-09-17T09:12:56.300Z">
+<meta property="og:image" content="https://codinglife.tech/images/jenv.png">
+<meta property="og:updated_time" content="2019-09-24T08:25:06.477Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JVM 执行 Java 程序时的内存区域划分">
-<meta name="twitter:description" content="在学习 Java 虚拟机（后面简称：JVM）中的垃圾回收机制（GC）之前，先需要了解 在 JVM 中的 Java 程序（class 文件）加载到内存之后到底是怎么存的。在阅读了 JVM规范和周志明的《深入理解Java虚拟机（第2版）》之后，总结一下JVM中的内存划分以及各个区域的作用。">
-<meta name="twitter:image" content="https://codinglife.tech/images/jvm-memory-layout.png">
+<meta name="twitter:title" content="Mac上的JDK多版本管理">
+<meta name="twitter:description" content="我的Mac上已经有一个JDK8的版本了，这不JDK13刚发布（2019-09-17），想快速的尝一尝鲜，就得安装多个版本的JDK了。这个对Node、Ruby、Python的使用者来说，已经不是个什么新鲜话题了，但是对于Java的使用者来说，似乎没有那么多的人受到过多版本的折磨（我是通过GitHub上nvm、rbenv、pyenv、jenv的Star数量臆测出这个结论的 :P）。">
+<meta name="twitter:image" content="https://codinglife.tech/images/jenv.png">
 
 
 
@@ -134,7 +134,7 @@
 
   
   
-  <link rel="canonical" href="https://codinglife.tech/2019/09/java-virtual-machine-runtime-memory-layout/">
+  <link rel="canonical" href="https://codinglife.tech/2019/09/manage-multiple-java-versions-on-mac/">
 
 
 
@@ -144,7 +144,7 @@
   };
 </script>
 
-  <title>JVM 执行 Java 程序时的内存区域划分 | Coding Life</title>
+  <title>Mac上的JDK多版本管理 | Coding Life</title>
   
 
 
@@ -444,7 +444,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://codinglife.tech/2019/09/java-virtual-machine-runtime-memory-layout/">
+    <link itemprop="mainEntityOfPage" href="https://codinglife.tech/2019/09/manage-multiple-java-versions-on-mac/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Max Peng">
@@ -461,7 +461,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">JVM 执行 Java 程序时的内存区域划分
+          <h2 class="post-title" itemprop="name headline">Mac上的JDK多版本管理
 
               
             
@@ -487,7 +487,7 @@
                 
               
 
-              <time title="创建时间：2019-09-17 10:28:03 / 修改时间：17:12:56" itemprop="dateCreated datePublished" datetime="2019-09-17T10:28:03+08:00">2019-09-17</time>
+              <time title="创建时间：2019-09-24 15:27:36 / 修改时间：16:25:06" itemprop="dateCreated datePublished" datetime="2019-09-24T15:27:36+08:00">2019-09-24</time>
             </span>
           
 
@@ -524,8 +524,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/09/java-virtual-machine-runtime-memory-layout/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/java-virtual-machine-runtime-memory-layout/" itemprop="commentCount"></span>
+                <a href="/2019/09/manage-multiple-java-versions-on-mac/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/manage-multiple-java-versions-on-mac/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -533,7 +533,7 @@
 
           
           
-            <span id="/2019/09/java-virtual-machine-runtime-memory-layout/" class="post-meta-item leancloud_visitors" data-flag-title="JVM 执行 Java 程序时的内存区域划分">
+            <span id="/2019/09/manage-multiple-java-versions-on-mac/" class="post-meta-item leancloud_visitors" data-flag-title="Mac上的JDK多版本管理">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -568,45 +568,79 @@
       
 
       
-        <p><img src="/images/jvm-memory-layout.png" alt="JVM Memory Layout"></p>
-<p>在学习 Java 虚拟机（后面简称：<code>JVM</code>）中的垃圾回收机制（GC）之前，先需要了解 在 JVM 中的 Java 程序（class 文件）加载到内存之后到底是怎么存的。在阅读了 <a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.5" target="_blank" rel="noopener"><strong>JVM规范</strong></a>和周志明的<a href="https://book.douban.com/subject/24722612/" target="_blank" rel="noopener"><strong>《深入理解Java虚拟机（第2版）》</strong></a>之后，总结一下JVM中的内存划分以及各个区域的作用。</p>
+        <p><img src="/images/jenv.png" alt="jEnv"><br>我的Mac上已经有一个JDK8的版本了，这不<a href="http://openjdk.java.net/projects/jdk/13/" target="_blank" rel="noopener">JDK13</a>刚发布（2019-09-17），想快速的尝一尝鲜，就得安装多个版本的JDK了。这个对Node、Ruby、Python的使用者来说，已经不是个什么新鲜话题了，但是对于Java的使用者来说，似乎没有那么多的人受到过多版本的折磨（我是通过GitHub上<a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener"><code>nvm</code></a>、<a href="https://github.com/rbenv/rbenv" target="_blank" rel="noopener"><code>rbenv</code></a>、<a href="https://github.com/pyenv/pyenv" target="_blank" rel="noopener"><code>pyenv</code></a>、<a href="https://github.com/jenv/jenv" target="_blank" rel="noopener"><code>jenv</code></a>的Star数量臆测出这个结论的 :P）。</p>
 <a id="more"></a>
 
-<p>在JVM规范中定义了5种运行时的数据区域：程序计数器（Program Counter Register）、Java虚拟机栈（JVM Stacks）、堆（Heap）、方法区（Method Area）、运行时常量池（Runtime Constant Pool）、本地方法栈（Native Method Stack）。在周志明的书中还提到了直接内存（Direct Memory），它并不是JVM运行时数据区域的一部分，在JVM的规范中也没有相关的定义。下面分别来说明各自的用途。</p>
-<h2 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h2><p>程序计数器，也叫PC Register。它的用途很单一，但是却是很多功能的基础。如果线程当前执行的是Native方法，那么寄存器里的值就是Undefined；如果线程当前执行的是非Native方法，那么寄存器里的值就是当前执行的JVM字节码指令的地址。像我们常用的分支、循环、跳转、异常处理、线程恢复等都依赖于它。</p>
-<p>由于JVM支持多个线程同时执行，所以每个线程都有一个独立的程序计数器，各个线程互不影响，这类内存区域也称之为<strong>线程私有</strong>的。</p>
-<h2 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h2><p>虚拟机栈也是<strong>线程私有</strong>的，随着一个线程的创建而创建，主要用来存储栈帧（Stack Frame）。什么是栈帧呢？在Java中，每个方法在执行时就会先创建一个栈帧并放入虚拟机栈中，在方法执行完毕时再从虚拟机栈中移除该栈帧。它主要用来存储局部变量表、操作数栈、动态链接、方法出口等信息。我们常说的堆（Heap）和栈（Stack）中的栈，指的就是虚拟机栈。</p>
-<p>在JVM规范中并没有对虚拟机栈空间的大小做限制，可以设置为固定大小的，也可以设置为可扩展的。但是在规范中定义了两种异常情况：</p>
 <ul>
-<li>如果计算时请求的栈空间大于虚拟机栈的最大值，则会抛出<code>StackOverflowError</code>异常；</li>
-<li>如果虚拟机栈设置为可扩展的并且无法再获取更多内存时，则会抛出<code>OutOfMemoryError</code>异常。</li>
+<li>nvm<iframe src="https://ghbtns.com/github-btn.html?user=nvm-sh&repo=nvm&type=star&count=true" frameborder="0" scrolling="0" width="200px" height="20px" style="vertical-align:middle"></iframe></li>
+<li>rbenv<iframe src="https://ghbtns.com/github-btn.html?user=rbenv&repo=rbenv&type=star&count=true" frameborder="0" scrolling="0" width="200px" height="20px" style="vertical-align:middle"></iframe></li>
+<li>pyenv<iframe src="https://ghbtns.com/github-btn.html?user=pyenv&repo=pyenv&type=star&count=true" frameborder="0" scrolling="0" width="200px" height="20px" style="vertical-align:middle"></iframe></li>
+<li>jenv<iframe src="https://ghbtns.com/github-btn.html?user=jenv&repo=jenv&type=star&count=true" frameborder="0" scrolling="0" width="200px" height="20px" style="vertical-align:middle"></iframe>
+
+</li>
 </ul>
-<h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>相比而言，堆在JVM管理的内存区域中属于最大的一块，随着虚拟机的启动而创建，用来存储所有的class实例和数组，所有<strong>线程共享</strong>这一区域，该区域也是垃圾回收的主要区域。虽然JVM规范中说所有的对象实例都在该区域分配空间，但是随着JIT技术的逐步发展，这一说法也不严谨了。</p>
-<p>堆空间的大小也可以设置为固定大小，或者可扩展的。但不管是何种方式，规范中还是定义了一种异常场景：</p>
+<h2 id="安装JDK-13"><a href="#安装JDK-13" class="headerlink" title="安装JDK 13"></a>安装JDK 13</h2><p>通过Homebrew 安装JDK 13，可以先通过<code>brew cask info java</code>查看目前Java的版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">java: 13,33:5b8a42f3905b406298b72d750b6919f6</span><br><span class="line">https://openjdk.java.net/</span><br><span class="line">Not installed</span><br><span class="line">From: https://github.com/Homebrew/homebrew-cask/blob/master/Casks/java.rb</span><br><span class="line">==&gt; Name</span><br><span class="line">OpenJDK Java Development Kit</span><br><span class="line">==&gt; Artifacts</span><br><span class="line">jdk-13.jdk -&gt; /Library/Java/JavaVirtualMachines/openjdk-13.jdk (Generic Artifact)</span><br></pre></td></tr></table></figure>
+
+<p>这里显示的是JDK13，正好是我想要安装的JDK版本，如果不是你想要的版本可以自己搜索相应的 Homebrew Tap。接下来直接安装:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ brew cask install java</span><br><span class="line">$ java -version</span><br><span class="line"></span><br><span class="line">openjdk version <span class="string">"13"</span> 2019-09-17</span><br><span class="line">OpenJDK Runtime Environment (build 13+33)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 13+33, mixed mode, sharing)</span><br></pre></td></tr></table></figure>
+
+<p>这就说明JDK13已经安装好了。</p>
+<p>但是另一个问题来了，我电脑上原来安装的JDK8去哪呢？我如何在不同的版本中随意切换呢？比如像Node的<code>nvm</code>，Ruby的<code>rvm</code>，Python的<code>pyenv</code>等。答案是我们可以通过<code>jenv</code>来实现相同的效果。</p>
+<h2 id="安装-jEnv"><a href="#安装-jEnv" class="headerlink" title="安装 jEnv"></a>安装 jEnv</h2><ol>
+<li>安装 jEnv<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew install jenv</span><br><span class="line">$ <span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>安装完成之后，然后检查是否安装成功。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ jenv doctor</span><br><span class="line">[OK]	No JAVA_HOME <span class="built_in">set</span></span><br><span class="line">[ERROR]	Java binary <span class="keyword">in</span> path is not <span class="keyword">in</span> the jenv shims.</span><br><span class="line">[ERROR]	Please check your path, or try using /path/to/java/home is not a valid path to java installation.</span><br><span class="line">	PATH : /usr/<span class="built_in">local</span>/Cellar/jenv/0.5.2/libexec/libexec:/Users/xxx/.cargo/bin:/Users/xxx/.pyenv/shims:/Users/username/.pyenv:/Users/xxx/.nvm/versions/node/v8.11.4/bin:/Users/xxx/bin:/usr/<span class="built_in">local</span>/bin:/Users/xxx/.cargo/bin:/usr/<span class="built_in">local</span>/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/<span class="built_in">local</span>/go/bin:/Users/xxx/Documents/Projects/golang/bin</span><br><span class="line">[ERROR]	Jenv is not loaded <span class="keyword">in</span> your zsh</span><br><span class="line">[ERROR]	To fix : 	cat <span class="built_in">eval</span> <span class="string">"<span class="variable">$(jenv init -)</span>"</span> &gt;&gt; /Users/xxx/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>在这里如果按照提示执行<code>cat eval &quot;$(jenv init -)&quot; &gt;&gt; /Users/xxx/.zshrc</code>：可能会得到如下错误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">cat <span class="built_in">eval</span> <span class="string">"<span class="variable">$(jenv init -)</span>"</span> &gt;&gt; /Users/xxx/.zshrc</span><br><span class="line">cat: <span class="built_in">eval</span>: No such file or directory</span><br><span class="line">cat: <span class="built_in">export</span> PATH=<span class="string">"/Users/xxx/.jenv/shims:<span class="variable">$&#123;PATH&#125;</span>"</span></span><br><span class="line"><span class="built_in">export</span> JENV_SHELL=zsh</span><br><span class="line"><span class="built_in">export</span> JENV_LOADED=1</span><br><span class="line"><span class="built_in">unset</span> JAVA_HOME</span><br><span class="line"><span class="built_in">source</span> <span class="string">'/usr/local/Cellar/jenv/0.5.2/libexec/libexec/../completions/jenv.zsh'</span></span><br><span class="line">jenv <span class="built_in">rehash</span> 2&gt;/dev/null</span><br><span class="line"><span class="function"><span class="title">jenv</span></span>() &#123;</span><br><span class="line">  <span class="built_in">typeset</span> <span class="built_in">command</span></span><br><span class="line">  <span class="built_in">command</span>=<span class="string">"<span class="variable">$1</span>"</span></span><br><span class="line">  <span class="keyword">if</span> [ <span class="string">"<span class="variable">$#</span>"</span> -gt 0 ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">shift</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">case</span> <span class="string">"<span class="variable">$command</span>"</span> <span class="keyword">in</span></span><br><span class="line">  <span class="built_in">enable</span>-plugin|<span class="built_in">rehash</span>|shell|shell-options)</span><br><span class="line">    <span class="built_in">eval</span> `jenv <span class="string">"sh-<span class="variable">$command</span>"</span> <span class="string">"<span class="variable">$@</span>"</span>`;;</span><br><span class="line">  *)</span><br><span class="line">    <span class="built_in">command</span> jenv <span class="string">"<span class="variable">$command</span>"</span> <span class="string">"<span class="variable">$@</span>"</span>;;</span><br><span class="line">  <span class="keyword">esac</span></span><br><span class="line">&#125;: No such file or directory</span><br></pre></td></tr></table></figure>
+
+<p>经过一番搜索，得到如下的解决办法，主要就是将<code>cat</code>替换为<code>echo</code>，这里我已经给jEnv提了个<a href="https://github.com/jenv/jenv/pull/265" target="_blank" rel="noopener">PR</a>，以消除这个干扰。</p>
 <ul>
-<li>如果计算需要更多的堆空间而无法满足时，则会抛出<code>OutOfMemoryError</code>异常。</li>
+<li><p>Bash用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">'export PATH="$HOME/.jenv/bin:$PATH"'</span> &gt;&gt; ~/.bash_profile</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">'eval "$(jenv init -)"'</span> &gt;&gt; ~/.bash_profile</span><br><span class="line">$ <span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Zsh用户</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">'export PATH="$HOME/.jenv/bin:$PATH"'</span> &gt;&gt; ~/.zshrc</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">'eval "$(jenv init -)"'</span> &gt;&gt; ~/.zshrc</span><br><span class="line">$ <span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
-<h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><p>方法区和堆一样，也是随着虚拟机启动而创建，所有<strong>线程共享</strong>，主要用来存储被JVM加载的类信息、常量、静态变量等信息。</p>
-<p>JVM规范中并未严格要求要对该区域进行垃圾回收，但是HotSpot虚拟机在垃圾回收的时候还是会考虑该区域，在分代垃圾回收中所说的“<strong>永久代</strong>”指的就是方法区。方法区的大小也可以设置为固定大小，或者可扩展的。但不管是何种方式，规范中还是定义了一种异常场景：</p>
-<ul>
-<li>如果计算需要更多的方法区空间而无法满足时，则会抛出<code>OutOfMemoryError</code>异常。</li>
+<p>然后再次执行<code>jenv doctor</code>，得到如下信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[OK]	No JAVA_HOME <span class="built_in">set</span></span><br><span class="line">[ERROR]	Java binary <span class="keyword">in</span> path is not <span class="keyword">in</span> the jenv shims.</span><br><span class="line">[ERROR]	Please check your path, or try using /path/to/java/home is not a valid path to java installation.</span><br><span class="line">	PATH : /usr/<span class="built_in">local</span>/Cellar/jenv/0.5.2/libexec/libexec:/Users/xxx/.jenv/shims:/Users/xxx/.cargo/bin:/Users/xxx/.pyenv/shims:/Users/username/.pyenv:/Users/xxx/.cargo/bin:/Users/xxx/.pyenv/shims:/Users/username/.pyenv:/Users/xxx/.nvm/versions/node/v8.11.4/bin:/Users/xxx/bin:/usr/<span class="built_in">local</span>/bin:/Users/xxx/.cargo/bin:/usr/<span class="built_in">local</span>/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/<span class="built_in">local</span>/go/bin:/Users/xxx/Documents/Projects/golang/bin:/Users/xxx/Documents/Projects/golang/bin</span><br><span class="line">[OK]	Jenv is correctly loaded</span><br></pre></td></tr></table></figure>
+
+<p>为了能够正确的设置<code>JAVA_HOME</code>，最好开启<code>export</code>插件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ jenv <span class="built_in">enable</span>-plugin <span class="built_in">export</span></span><br><span class="line">$ <span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
+
+<h2 id="管理不同版本的JDK"><a href="#管理不同版本的JDK" class="headerlink" title="管理不同版本的JDK"></a>管理不同版本的JDK</h2><h3 id="添加JDK"><a href="#添加JDK" class="headerlink" title="添加JDK"></a>添加JDK</h3><p>添加最新安装的JDK：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ jenv add $(/usr/libexec/java_home)</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>/usr/libexec/java_home</code>所指的位置不是你想要的，也可以手动指定目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看JDK版本"><a href="#查看JDK版本" class="headerlink" title="查看JDK版本"></a>查看JDK版本</h3><p>执行<code>jenv versions</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  system</span><br><span class="line">* 1.8 (<span class="built_in">set</span> by JENV_VERSION environment variable)</span><br><span class="line">  1.8.0.191</span><br><span class="line">  13</span><br><span class="line">  openjdk64-13</span><br><span class="line">  oracle64-1.8.0.191</span><br></pre></td></tr></table></figure>
+
+<p>默认情况下，system指的是系统中安装的最新版本的JDK。</p>
+<h3 id="切换JDK版本"><a href="#切换JDK版本" class="headerlink" title="切换JDK版本"></a>切换JDK版本</h3><ul>
+<li><p>Global<br>设置全局模式下的JDK版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ jenv global 13</span><br><span class="line">$ <span class="built_in">exec</span> <span class="variable">$SHELL</span> -l </span><br><span class="line">$ java -version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Local<br>在某个工作目录下设置JDK版本，会在当前目录下创建一个<code>.java-version</code>的文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ jenv <span class="built_in">local</span> 1.8</span><br><span class="line">$ <span class="built_in">exec</span> <span class="variable">$SHELL</span> -l </span><br><span class="line">$ java -version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Shell<br>设置当前Shell session中的JDK版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ jenv shell 1.8</span><br><span class="line">$ java -version</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
-<h2 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h2><p>运行时常量池是方法区的一部分，用于存储编译期生成的各种字面量和符号引用。在Java中并不要求常量一定只有编译期才能产生，运行期间也可能将新的常量放入池中，例如<code>String</code>类的<code>intern()</code>方法。</p>
-<p>每个运行时常量池都是随着一个类或者接口的创建而创建的。在规范中定义了一种异常场景：</p>
-<ul>
-<li>在创建一个类或者接口时，如果运行时的常量池无法分配到足够的空间时，则会抛出<code>OutOfMemoryError</code>异常。</li>
-</ul>
-<h2 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h2><p>本地方法栈和虚拟机栈类似，也是<strong>线程私有</strong>的，随着一个线程的创建而创建，只不过虚拟机栈是用来服务Java方法调用，而本地方法栈是用来服务本地方法调用的。</p>
-<p>在JVM规范中并没有对本地方法栈空间的大小做限制，可以设置为固定大小的，也可以设置为可扩展的。在规范中也定义了两种异常情况：</p>
-<ul>
-<li>如果计算时请求的栈空间大于本地方法栈的最大值，则会抛出<code>StackOverflowError</code>异常；</li>
-<li>如果本地方法栈设置为可扩展的并且无法再获取更多内存时，则会抛出<code>OutOfMemoryError</code>异常。</li>
-</ul>
-<h2 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存*"></a>直接内存<sup>*</sup></h2><p>直接内存不受虚拟机参数的控制，在NIO中有一种基于通道（Channel）与缓冲区（Buffer)的I/O方式，它可以通过Native方法在堆外分配内存，然后通过DirectByteBuffer对象来引用这块内存。因为避免了在Java堆和Native堆之间来回复制数据，从而在某些场景中能够得到性能的提升。一旦使用的直接内存超过了物理内存的总和，则会抛出<code>OutOfMemoryError</code>异常。</p>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><blockquote>
 <ul>
-<li><a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.5" target="_blank" rel="noopener">https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.5</a></li>
-<li><a href="https://book.douban.com/subject/24722612/" target="_blank" rel="noopener">https://book.douban.com/subject/24722612/</a></li>
+<li><a href="http://www.jenv.be/" target="_blank" rel="noopener">http://www.jenv.be/</a></li>
+<li><a href="https://github.com/jenv/jenv" target="_blank" rel="noopener">https://github.com/jenv/jenv</a></li>
+<li><a href="https://emcorrales.com/blog/install-oracle-jdk-macos-homebrew" target="_blank" rel="noopener">https://emcorrales.com/blog/install-oracle-jdk-macos-homebrew</a></li>
 </ul>
 </blockquote>
 
@@ -686,7 +720,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://codinglife.tech/2019/09/java-virtual-machine-runtime-memory-layout/" title="JVM 执行 Java 程序时的内存区域划分">https://codinglife.tech/2019/09/java-virtual-machine-runtime-memory-layout/</a>
+    <a href="https://codinglife.tech/2019/09/manage-multiple-java-versions-on-mac/" title="Mac上的JDK多版本管理">https://codinglife.tech/2019/09/manage-multiple-java-versions-on-mac/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -702,7 +736,11 @@
         
         <div class="post-tags">
           
-            <a href="/tags/JVM/" rel="tag"><i class="fa fa-tag"></i> JVM</a>
+            <a href="/tags/jEnv/" rel="tag"><i class="fa fa-tag"></i> jEnv</a>
+          
+            <a href="/tags/Homebrew/" rel="tag"><i class="fa fa-tag"></i> Homebrew</a>
+          
+            <a href="/tags/JDK/" rel="tag"><i class="fa fa-tag"></i> JDK</a>
           
         </div>
       
@@ -759,8 +797,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/implement-sequence-with-mysql-last-insert-id/" rel="next" title="在MySQL中使用LAST_INSERT_ID获取唯一自增序列">
-                <i class="fa fa-chevron-left"></i> 在MySQL中使用LAST_INSERT_ID获取唯一自增序列
+              <a href="/2019/09/java-virtual-machine-runtime-memory-layout/" rel="next" title="JVM 执行 Java 程序时的内存区域划分">
+                <i class="fa fa-chevron-left"></i> JVM 执行 Java 程序时的内存区域划分
               </a>
             
           </div>
@@ -768,10 +806,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/manage-multiple-java-versions-on-mac/" rel="prev" title="Mac上的JDK多版本管理">
-                Mac上的JDK多版本管理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -992,7 +1026,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序计数器"><span class="nav-number">1.</span> <span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java虚拟机栈"><span class="nav-number">2.</span> <span class="nav-text">Java虚拟机栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆"><span class="nav-number">3.</span> <span class="nav-text">堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法区"><span class="nav-number">4.</span> <span class="nav-text">方法区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时常量池"><span class="nav-number">5.</span> <span class="nav-text">运行时常量池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地方法栈"><span class="nav-number">6.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直接内存"><span class="nav-number">7.</span> <span class="nav-text">直接内存*</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">8.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装JDK-13"><span class="nav-number">1.</span> <span class="nav-text">安装JDK 13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-jEnv"><span class="nav-number">2.</span> <span class="nav-text">安装 jEnv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管理不同版本的JDK"><span class="nav-number">3.</span> <span class="nav-text">管理不同版本的JDK</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加JDK"><span class="nav-number">3.1.</span> <span class="nav-text">添加JDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看JDK版本"><span class="nav-number">3.2.</span> <span class="nav-text">查看JDK版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切换JDK版本"><span class="nav-number">3.3.</span> <span class="nav-text">切换JDK版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
 
           </div>
