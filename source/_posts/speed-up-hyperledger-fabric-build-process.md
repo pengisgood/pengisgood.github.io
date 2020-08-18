@@ -69,7 +69,7 @@ ADD . $GOPATH/src/github.com/hyperledger/fabric
 ...
 ```
 
-另外也可以替换为[中科大的源](dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn)，或者[清华的源](dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn)，或者其他的源。
+另外也可以替换为中科大的源：dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn，或者清华的源：dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn，或者其他的源。
 
 **注意**：这里对于使用multi-stage的Dockerfile，如果不同的stage使用的是不同的基础镜像，则都需要替换源。
 
