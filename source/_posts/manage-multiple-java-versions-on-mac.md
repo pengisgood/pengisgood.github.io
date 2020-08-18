@@ -47,6 +47,7 @@ OpenJDK 64-Bit Server VM (build 13+33, mixed mode, sharing)
 ## 安装 jEnv
 
 1. 安装 jEnv
+
 ```bash
 $ brew install jenv
 $ exec $SHELL -l
@@ -113,6 +114,15 @@ $ exec $SHELL -l
 $ jenv enable-plugin export
 $ exec $SHELL -l
 ```
+如果你是Maven用户，建议开启Maven插件，使得Maven能够使用正确的JDK版本：
+
+```shell
+$ jenv enable-plugin maven
+$ exec $SHELL -l
+```
+
+
+
 ## 管理不同版本的JDK
 
 ### 添加JDK
