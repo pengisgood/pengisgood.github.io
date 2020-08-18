@@ -112,7 +112,7 @@
 
 
   <meta name="description" content="我的Mac上已经有一个JDK8的版本了，这不JDK13刚发布（2019-09-17），想快速的尝一尝鲜，就得安装多个版本的JDK了。这个对Node、Ruby、Python的使用者来说，已经不是个什么新鲜话题了，但是对于Java的使用者来说，似乎没有那么多的人受到过多版本的折磨（我是通过GitHub上nvm、rbenv、pyenv、jenv的Star数量臆测出这个结论的 :P）。">
-<meta name="keywords" content="jEnv,Homebrew,JDK">
+<meta name="keywords" content="JDK,jEnv,Homebrew">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac上的JDK多版本管理">
 <meta property="og:url" content="https://codinglife.tech/2019/09/manage-multiple-java-versions-on-mac/index.html">
@@ -120,7 +120,7 @@
 <meta property="og:description" content="我的Mac上已经有一个JDK8的版本了，这不JDK13刚发布（2019-09-17），想快速的尝一尝鲜，就得安装多个版本的JDK了。这个对Node、Ruby、Python的使用者来说，已经不是个什么新鲜话题了，但是对于Java的使用者来说，似乎没有那么多的人受到过多版本的折磨（我是通过GitHub上nvm、rbenv、pyenv、jenv的Star数量臆测出这个结论的 :P）。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://codinglife.tech/images/jenv.png">
-<meta property="og:updated_time" content="2019-09-24T08:25:06.477Z">
+<meta property="og:updated_time" content="2020-08-10T06:44:10.900Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac上的JDK多版本管理">
 <meta name="twitter:description" content="我的Mac上已经有一个JDK8的版本了，这不JDK13刚发布（2019-09-17），想快速的尝一尝鲜，就得安装多个版本的JDK了。这个对Node、Ruby、Python的使用者来说，已经不是个什么新鲜话题了，但是对于Java的使用者来说，似乎没有那么多的人受到过多版本的折磨（我是通过GitHub上nvm、rbenv、pyenv、jenv的Star数量臆测出这个结论的 :P）。">
@@ -304,7 +304,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">6</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">7</span></a>
 
   </li>
         
@@ -322,7 +322,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">2</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">3</span></a>
 
   </li>
         
@@ -340,7 +340,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">4</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">5</span></a>
 
   </li>
         
@@ -487,13 +487,23 @@
                 
               
 
-              <time title="创建时间：2019-09-24 15:27:36 / 修改时间：16:25:06" itemprop="dateCreated datePublished" datetime="2019-09-24T15:27:36+08:00">2019-09-24</time>
+              <time title="创建时间：2019-09-24 15:27:36" itemprop="dateCreated datePublished" datetime="2019-09-24T15:27:36+08:00">2019-09-24</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-08-10 14:44:10" itemprop="dateModified" datetime="2020-08-10T14:44:10+08:00">2020-08-10</time>
+              </span>
             
           
 
@@ -588,10 +598,10 @@
 <p>这就说明JDK13已经安装好了。</p>
 <p>但是另一个问题来了，我电脑上原来安装的JDK8去哪呢？我如何在不同的版本中随意切换呢？比如像Node的<code>nvm</code>，Ruby的<code>rvm</code>，Python的<code>pyenv</code>等。答案是我们可以通过<code>jenv</code>来实现相同的效果。</p>
 <h2 id="安装-jEnv"><a href="#安装-jEnv" class="headerlink" title="安装 jEnv"></a>安装 jEnv</h2><ol>
-<li>安装 jEnv<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew install jenv</span><br><span class="line">$ <span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>安装 jEnv</li>
 </ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew install jenv</span><br><span class="line">$ <span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
+
 <p>安装完成之后，然后检查是否安装成功。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ jenv doctor</span><br><span class="line">[OK]	No JAVA_HOME <span class="built_in">set</span></span><br><span class="line">[ERROR]	Java binary <span class="keyword">in</span> path is not <span class="keyword">in</span> the jenv shims.</span><br><span class="line">[ERROR]	Please check your path, or try using /path/to/java/home is not a valid path to java installation.</span><br><span class="line">	PATH : /usr/<span class="built_in">local</span>/Cellar/jenv/0.5.2/libexec/libexec:/Users/xxx/.cargo/bin:/Users/xxx/.pyenv/shims:/Users/username/.pyenv:/Users/xxx/.nvm/versions/node/v8.11.4/bin:/Users/xxx/bin:/usr/<span class="built_in">local</span>/bin:/Users/xxx/.cargo/bin:/usr/<span class="built_in">local</span>/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/<span class="built_in">local</span>/go/bin:/Users/xxx/Documents/Projects/golang/bin</span><br><span class="line">[ERROR]	Jenv is not loaded <span class="keyword">in</span> your zsh</span><br><span class="line">[ERROR]	To fix : 	cat <span class="built_in">eval</span> <span class="string">"<span class="variable">$(jenv init -)</span>"</span> &gt;&gt; /Users/xxx/.zshrc</span><br></pre></td></tr></table></figure>
 
@@ -613,6 +623,9 @@
 
 <p>为了能够正确的设置<code>JAVA_HOME</code>，最好开启<code>export</code>插件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ jenv <span class="built_in">enable</span>-plugin <span class="built_in">export</span></span><br><span class="line">$ <span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span><br></pre></td></tr></table></figure>
+
+<p>如果你是Maven用户，建议开启Maven插件，使得Maven能够使用正确的JDK版本：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> jenv <span class="built_in">enable</span>-plugin maven</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">exec</span> <span class="variable">$SHELL</span> -l</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="管理不同版本的JDK"><a href="#管理不同版本的JDK" class="headerlink" title="管理不同版本的JDK"></a>管理不同版本的JDK</h2><h3 id="添加JDK"><a href="#添加JDK" class="headerlink" title="添加JDK"></a>添加JDK</h3><p>添加最新安装的JDK：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ jenv add $(/usr/libexec/java_home)</span><br></pre></td></tr></table></figure>
@@ -736,11 +749,11 @@
         
         <div class="post-tags">
           
+            <a href="/tags/JDK/" rel="tag"><i class="fa fa-tag"></i> JDK</a>
+          
             <a href="/tags/jEnv/" rel="tag"><i class="fa fa-tag"></i> jEnv</a>
           
             <a href="/tags/Homebrew/" rel="tag"><i class="fa fa-tag"></i> Homebrew</a>
-          
-            <a href="/tags/JDK/" rel="tag"><i class="fa fa-tag"></i> JDK</a>
           
         </div>
       
@@ -806,6 +819,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -880,7 +897,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -901,7 +918,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -930,7 +949,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1047,7 +1068,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">鄂ICP备19018329号 </a>&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">鄂ICP备19018329号 </a>&copy; 2019 – <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>
@@ -1078,6 +1099,10 @@
 
 
 
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1278814267&web_id=1278814267"></script>
+  </div>
 
 
 
