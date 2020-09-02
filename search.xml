@@ -53,11 +53,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[关于我]]></title>
-    <url>%2Fabout%2Findex.html</url>
-    <content type="text"><![CDATA[简历持续更新中… 出版的书籍AngularJS深度剖析与最佳实践 开源贡献下面是我贡献过代码或文档的开源项目列表： 2020https://github.com/ipfs/go-ipfs-api https://github.com/ipfs-shipyard/ipfs-primer https://github.com/hyperledger/fabric https://github.com/hyperledger/fabric-docs-i18n 2019https://github.com/justauth/JustAuth https://github.com/jenv/jenv 2018https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster https://github.com/hyperledger/cello 2017https://github.com/OpenLMIS/openlmis-stockmanagement https://github.com/OpenLMIS/openlmis-referencedata https://github.com/OpenLMIS/openlmis-ui-layout https://github.com/OpenLMIS/openlmis-stockmanagement-ui https://github.com/OpenLMIS/openlmis-ui-components https://github.com/OpenLMIS/openlmis-requisition-refUI https://github.com/OpenLMIS/dev-ui 2014https://github.com/jingyanjiaoliu/angular-guide-zh https://github.com/sbt/website]]></content>
-  </entry>
-  <entry>
     <title></title>
     <url>%2F404%2F404.html</url>
     <content type="text"><![CDATA[]]></content>
@@ -66,6 +61,11 @@
     <title><![CDATA[categories]]></title>
     <url>%2Fcategories%2Findex.html</url>
     <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[关于我]]></title>
+    <url>%2Fabout%2Findex.html</url>
+    <content type="text"><![CDATA[简历持续更新中… Hongwei Peng(彭洪伟)，pengisgood(at)gmail(dot)comFull-stack developer | Open source contributor | Lifelong learner 简历 LinkedIn: https://www.linkedin.com/in/max-hongwei-peng Stackoverflow: https://stackoverflow.com/story/maxpeng 出版的书籍AngularJS深度剖析与最佳实践 开源贡献下面是我贡献过代码或文档的开源项目列表： 2020https://github.com/ipfs/go-ipfs-api https://github.com/ipfs-shipyard/ipfs-primer https://github.com/hyperledger/fabric https://github.com/hyperledger/fabric-docs-i18n 2019https://github.com/justauth/JustAuth https://github.com/jenv/jenv 2018https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster https://github.com/hyperledger/cello 2017https://github.com/OpenLMIS/openlmis-stockmanagement https://github.com/OpenLMIS/openlmis-referencedata https://github.com/OpenLMIS/openlmis-ui-layout https://github.com/OpenLMIS/openlmis-stockmanagement-ui https://github.com/OpenLMIS/openlmis-ui-components https://github.com/OpenLMIS/openlmis-requisition-refUI https://github.com/OpenLMIS/dev-ui 2014https://github.com/jingyanjiaoliu/angular-guide-zh https://github.com/sbt/website]]></content>
   </entry>
   <entry>
     <title><![CDATA[tags]]></title>
