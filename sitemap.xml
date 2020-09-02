@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://codinglife.tech/about/index.html</loc>
+    
+    <lastmod>2020-09-02T08:18:27.160Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://codinglife.tech/2020/09/awesome-mirrors/</loc>
+    
+    <lastmod>2020-09-01T14:10:54.818Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://codinglife.tech/2020/08/speed-up-hyperledger-fabric-build-process/</loc>
     
     <lastmod>2020-08-18T08:45:25.333Z</lastmod>
@@ -38,13 +52,6 @@
   
   <url>
     <loc>https://codinglife.tech/2019/09/java-virtual-machine-runtime-memory-layout/</loc>
-    
-    <lastmod>2020-04-15T02:42:06.608Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://codinglife.tech/about/index.html</loc>
     
     <lastmod>2020-04-15T02:42:06.608Z</lastmod>
     
