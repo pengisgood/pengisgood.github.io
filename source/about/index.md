@@ -5,6 +5,14 @@ date: 2019-07-15 23:20:46
 
 > 简历持续更新中...
 
+Hongwei Peng(彭洪伟)，pengisgood(at)gmail(dot)com
+**Full-stack developer** | **Open source contributor** | **Lifelong learner**
+
+## 简历
+
+* LinkedIn: https://www.linkedin.com/in/max-hongwei-peng
+* Stackoverflow: https://stackoverflow.com/story/maxpeng
+
 ## 出版的书籍
 
 <a href="https://book.douban.com/subject/26708133/"><img src="https://img1.doubanio.com/view/subject/s/public/s28382819.jpg" title="AngularJS深度剖析与最佳实践" alt="AngularJS深度剖析与最佳实践" rel="v:photo" style="max-width: 135px;max-height: 200px;margin-left:20px">AngularJS深度剖析与最佳实践</a>
