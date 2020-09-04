@@ -118,7 +118,7 @@
 <meta property="og:site_name" content="Coding Life">
 <meta property="og:description" content="本文与GitHub仓库保持同步。  由于众所周知的原因，中国的开发者在下载各种依赖的时候速度都比较慢。因此部分有实力的高校、公司在国内搭建了方便开发者的各种镜像仓库，并且几乎都是和国外的源定时同步的。本仓库主要收集方便中国开发者提速的源，以及配置的方式。 下面的操作方式在不同的系统可能会有细微的差别，欢迎大家补充和纠正。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-03T16:22:12.669Z">
+<meta property="og:updated_time" content="2020-09-04T02:06:13.095Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开发人员常用的国内镜像仓库">
 <meta name="twitter:description" content="本文与GitHub仓库保持同步。  由于众所周知的原因，中国的开发者在下载各种依赖的时候速度都比较慢。因此部分有实力的高校、公司在国内搭建了方便开发者的各种镜像仓库，并且几乎都是和国外的源定时同步的。本仓库主要收集方便中国开发者提速的源，以及配置的方式。 下面的操作方式在不同的系统可能会有细微的差别，欢迎大家补充和纠正。">
@@ -499,7 +499,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-09-04 00:22:12" itemprop="dateModified" datetime="2020-09-04T00:22:12+08:00">2020-09-04</time>
+                <time title="修改时间：2020-09-04 10:06:13" itemprop="dateModified" datetime="2020-09-04T10:06:13+08:00">2020-09-04</time>
               </span>
             
           
@@ -568,18 +568,18 @@
 <a id="more"></a>
 
 <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li><a href="#docker">Docker</a></li>
-<li><a href="#nodejs">Nodejs</a></li>
-<li><a href="#python">Python</a></li>
-<li><a href="#java">Java</a></li>
-<li><a href="#goproxy">Goproxy</a></li>
-<li><a href="#ruby">Ruby</a></li>
-<li><a href="#alpine-apk">Alpine apk</a></li>
-<li><a href="#centos-yum">Centos yum</a></li>
-<li><a href="#debian-apt">Debian apt</a></li>
-<li><a href="#ubuntu-apt">Ubuntu apt</a></li>
-<li><a href="#homebrew">Homebrew</a></li>
-<li><a href="#ios">iOS</a></li>
+<li><a href="#Docker">Docker</a></li>
+<li><a href="#Nodejs">Nodejs</a></li>
+<li><a href="#Python">Python</a></li>
+<li><a href="#Java">Java</a></li>
+<li><a href="#Goproxy">Goproxy</a></li>
+<li><a href="#Ruby">Ruby</a></li>
+<li><a href="#Alpine-apk">Alpine apk</a></li>
+<li><a href="#Centos-yum">Centos yum</a></li>
+<li><a href="#Debian-apt">Debian apt</a></li>
+<li><a href="#Ubuntu-apt">Ubuntu apt</a></li>
+<li><a href="#Homebrew">Homebrew</a></li>
+<li><a href="#iOS">iOS</a></li>
 </ul>
 <h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><p>首先从网上搜索国内的docker registry源，然后修改docker的配置并<strong>重启</strong>docker。在这里我比较推荐使用免费的阿里云镜像加速器（至少截至2020年09月03日还是免费的），目前使用一直比较平稳。</p>
 <ul>
@@ -604,7 +604,7 @@
 <ul>
 <li>临时使用</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 为单用户安装</span></span><br><span class="line">npm install --registry https://registry.npm.taobao.org &lt;package-name&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">为所有用户安装</span></span><br><span class="line">npm install --global --registry https://registry.npm.taobao.org &lt;package-name&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> yarn</span></span><br><span class="line">yarn save &lt;package-name&gt; --registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 为单用户安装</span><br><span class="line">npm install --registry https://registry.npm.taobao.org &lt;package-name&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>为所有用户安装</span><br><span class="line">npm install --global --registry https://registry.npm.taobao.org &lt;package-name&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> yarn</span><br><span class="line">yarn save &lt;package-name&gt; --registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>默认使用</li>
