@@ -5,7 +5,7 @@ tags:
 categories:
 ---
 
-> 本文与[GitHub仓库](https://github.com/pengisgood/awesome-mirrors)保持同步。
+> 本文如果对你有帮助请帮忙Star一下，以帮助更多的人。<iframe src="https://ghbtns.com/github-btn.html?user=pengisgood&repo=awesome-mirrors&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="32" style="vertical-align:text-top"></iframe><iframe src="https://ghbtns.com/github-btn.html?user=pengisgood&repo=awesome-mirrors&type=follow&count=true" frameborder="0" scrolling="0" width="200px" height="32" style="vertical-align:text-top"></iframe>
 
 由于众所周知的原因，中国的开发者在下载各种依赖的时候速度都比较慢。因此部分有实力的高校、公司在国内搭建了方便开发者的各种镜像仓库，并且几乎都是和国外的源定时同步的。本仓库主要收集方便中国开发者提速的源，以及配置的方式。
 
