@@ -15,18 +15,18 @@ categories:
 
 ## 目录
 
-+ [Docker](#docker)
-+ [Nodejs](#nodejs)
-+ [Python](#python)
-+ [Java](#java)
-+ [Goproxy](#goproxy)
-+ [Ruby](#ruby)
-+ [Alpine apk](#alpine-apk)
-+ [Centos yum](#centos-yum)
-+ [Debian apt](#debian-apt)
-+ [Ubuntu apt](#ubuntu-apt)
-+ [Homebrew](#homebrew)
-+ [iOS](#ios)
++ [Docker](#Docker)
++ [Nodejs](#Nodejs)
++ [Python](#Python)
++ [Java](#Java)
++ [Goproxy](#Goproxy)
++ [Ruby](#Ruby)
++ [Alpine apk](#Alpine-apk)
++ [Centos yum](#Centos-yum)
++ [Debian apt](#Debian-apt)
++ [Ubuntu apt](#Ubuntu-apt)
++ [Homebrew](#Homebrew)
++ [iOS](#iOS)
 
 
 ## Docker
