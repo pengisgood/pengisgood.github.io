@@ -1,8 +1,8 @@
 ---
-title: 加速Hyperledger Fabric的docker镜像构建过程
+title: 加速 Hyperledger Fabric 的 Docker 镜像构建过程
 date: 2020-08-18 16:26:40
-tags: [docker, hyperledger-fabric]
-categories: [blockchain]
+tags: [Blockchain, Docker, Hyperledger-Fabric]
+categories: [Productivity]
 ---
 
 Hyperledger Fabric 从`v2.0`开始，全面将docker基础镜像替换成了体积更小、潜在安全风险更少、更加轻量的`Alpine Linux`，从而使得`make docker`出来的各种镜像的体积几乎都缩小为原来的一半，确实能够节省更多的硬盘空间。但是，由于众所周知的原因，对于生在红旗下，长在新中国的程序员们，第一次在Fabric项目下构建docker镜像时，依然是奇慢无比，屡次超时。

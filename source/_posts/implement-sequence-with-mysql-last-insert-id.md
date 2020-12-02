@@ -1,8 +1,8 @@
 ---
 title: 在MySQL中使用LAST_INSERT_ID获取唯一自增序列
 date: 2019-07-15 20:03:02
-tags: mysql
-categories: database
+tags: [MySQL]
+categories: [Database]
 ---
 
 一般如果遇到生成全局唯一的自增ID的需求时，往往第一反应都是直接利用数据的Sequence对象，简单，直接了当。但是MySQL偏偏不支持Sequence对象，那我们该如何是好呢？

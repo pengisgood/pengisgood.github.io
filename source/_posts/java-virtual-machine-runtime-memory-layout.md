@@ -2,7 +2,7 @@
 title: JVM 执行 Java 程序时的内存区域划分
 date: 2019-09-17 10:28:03
 tags: [JVM]
-categories: Java
+categories: [Java]
 ---
 
 ![JVM Memory Layout](/images/jvm-memory-layout.png)

@@ -1,8 +1,8 @@
 ---
 title: Mac上的JDK多版本管理
 date: 2019-09-24 15:27:36
-tags: [JDK, jEnv, Homebrew]
-categories: Java
+tags: [JDK, jEnv]
+categories: [Java]
 ---
 ![jEnv](/images/jenv.png)
 我的Mac上已经有一个JDK8的版本了，这不[JDK13](http://openjdk.java.net/projects/jdk/13/)刚发布（2019-09-17），想快速的尝一尝鲜，就得安装多个版本的JDK了。这个对Node、Ruby、Python的使用者来说，已经不是个什么新鲜话题了，但是对于Java的使用者来说，似乎没有那么多的人受到过多版本的折磨（我是通过GitHub上[`nvm`](https://github.com/nvm-sh/nvm)、[`rbenv`](https://github.com/rbenv/rbenv)、[`pyenv`](https://github.com/pyenv/pyenv)、[`jenv`](https://github.com/jenv/jenv)的Star数量臆测出这个结论的 :P）。

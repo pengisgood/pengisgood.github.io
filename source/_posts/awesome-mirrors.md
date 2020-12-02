@@ -1,8 +1,8 @@
 ---
 title: 开发人员常用的国内镜像仓库
 date: 2020-09-01 22:10:54
-tags: 
-categories: productivity
+tags: [Untagged]
+categories: [Productivity]
 ---
 ![Awesome mirrors](/images/awesome-mirrors.jpg)
 
