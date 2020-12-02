@@ -2,9 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://codinglife.tech/tags/index.html</loc>
+    
+    <lastmod>2020-12-02T03:09:49.081Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://codinglife.tech/categories/index.html</loc>
+    
+    <lastmod>2020-12-02T03:09:38.528Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://codinglife.tech/2020/08/speed-up-hyperledger-fabric-build-process/</loc>
+    
+    <lastmod>2020-12-02T03:09:17.590Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://codinglife.tech/2019/07/implement-sequence-with-mysql-last-insert-id/</loc>
+    
+    <lastmod>2020-12-02T03:08:12.122Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://codinglife.tech/2020/09/awesome-mirrors/</loc>
     
-    <lastmod>2020-09-04T02:56:59.322Z</lastmod>
+    <lastmod>2020-12-02T03:08:06.045Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://codinglife.tech/2019/09/manage-multiple-java-versions-on-mac/</loc>
+    
+    <lastmod>2020-12-02T03:05:20.338Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://codinglife.tech/2019/09/java-virtual-machine-runtime-memory-layout/</loc>
+    
+    <lastmod>2020-12-02T03:05:15.727Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://codinglife.tech/2020/12/java-hashcode-in-depth/</loc>
+    
+    <lastmod>2020-12-02T03:05:09.593Z</lastmod>
     
   </url>
   
@@ -12,48 +61,6 @@
     <loc>https://codinglife.tech/about/index.html</loc>
     
     <lastmod>2020-09-02T08:35:59.844Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://codinglife.tech/2020/08/speed-up-hyperledger-fabric-build-process/</loc>
-    
-    <lastmod>2020-08-18T08:45:25.333Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://codinglife.tech/2019/09/manage-multiple-java-versions-on-mac/</loc>
-    
-    <lastmod>2020-08-10T06:44:10.900Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://codinglife.tech/tags/index.html</loc>
-    
-    <lastmod>2020-04-15T02:42:06.615Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://codinglife.tech/categories/index.html</loc>
-    
-    <lastmod>2020-04-15T02:42:06.609Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://codinglife.tech/2019/07/implement-sequence-with-mysql-last-insert-id/</loc>
-    
-    <lastmod>2020-04-15T02:42:06.608Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://codinglife.tech/2019/09/java-virtual-machine-runtime-memory-layout/</loc>
-    
-    <lastmod>2020-04-15T02:42:06.608Z</lastmod>
     
   </url>
   

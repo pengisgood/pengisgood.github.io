@@ -112,6 +112,7 @@
 
 
   <meta name="description" content="本文如果对你有帮助请帮忙Star一下，以帮助更多的人。  由于众所周知的原因，中国的开发者在下载各种依赖的时候速度都比较慢。因此部分有实力的高校、公司在国内搭建了方便开发者的各种镜像仓库，并且几乎都是和国外的源定时同步的。本仓库主要收集方便中国开发者提速的源，以及配置的方式。 下面的操作方式在不同的系统可能会有细微的差别，欢迎大家补充和纠正。">
+<meta name="keywords" content="Untagged">
 <meta property="og:type" content="article">
 <meta property="og:title" content="开发人员常用的国内镜像仓库">
 <meta property="og:url" content="https://codinglife.tech/2020/09/awesome-mirrors/index.html">
@@ -119,7 +120,7 @@
 <meta property="og:description" content="本文如果对你有帮助请帮忙Star一下，以帮助更多的人。  由于众所周知的原因，中国的开发者在下载各种依赖的时候速度都比较慢。因此部分有实力的高校、公司在国内搭建了方便开发者的各种镜像仓库，并且几乎都是和国外的源定时同步的。本仓库主要收集方便中国开发者提速的源，以及配置的方式。 下面的操作方式在不同的系统可能会有细微的差别，欢迎大家补充和纠正。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://codinglife.tech/images/awesome-mirrors.jpg">
-<meta property="og:updated_time" content="2020-09-04T02:56:59.322Z">
+<meta property="og:updated_time" content="2020-12-02T03:08:06.045Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开发人员常用的国内镜像仓库">
 <meta name="twitter:description" content="本文如果对你有帮助请帮忙Star一下，以帮助更多的人。  由于众所周知的原因，中国的开发者在下载各种依赖的时候速度都比较慢。因此部分有实力的高校、公司在国内搭建了方便开发者的各种镜像仓库，并且几乎都是和国外的源定时同步的。本仓库主要收集方便中国开发者提速的源，以及配置的方式。 下面的操作方式在不同的系统可能会有细微的差别，欢迎大家补充和纠正。">
@@ -303,7 +304,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">7</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">17</span></a>
 
   </li>
         
@@ -321,7 +322,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">3</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">17</span></a>
 
   </li>
         
@@ -339,7 +340,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">5</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">6</span></a>
 
   </li>
         
@@ -501,11 +502,26 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-09-04 10:56:59" itemprop="dateModified" datetime="2020-09-04T10:56:59+08:00">2020-09-04</time>
+                <time title="修改时间：2020-12-02 11:08:06" itemprop="dateModified" datetime="2020-12-02T11:08:06+08:00">2020-12-02</time>
               </span>
             
           
 
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Productivity/" itemprop="url" rel="index"><span itemprop="name">Productivity</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -583,6 +599,7 @@
 <li><a href="#Ubuntu-apt">Ubuntu apt</a></li>
 <li><a href="#Homebrew">Homebrew</a></li>
 <li><a href="#iOS">iOS</a></li>
+<li><a href="#Git">Git</a></li>
 </ul>
 <h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><p>首先从网上搜索国内的docker registry源，然后修改docker的配置并<strong>重启</strong>docker。在这里我比较推荐使用免费的阿里云镜像加速器（至少截至2020年09月03日还是免费的），目前使用一直比较平稳。</p>
 <ul>
@@ -607,7 +624,7 @@
 <ul>
 <li>临时使用</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 为单用户安装</span></span><br><span class="line">npm install --registry https://registry.npm.taobao.org &lt;package-name&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">为所有用户安装</span></span><br><span class="line">npm install --global --registry https://registry.npm.taobao.org &lt;package-name&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> yarn</span></span><br><span class="line">yarn save &lt;package-name&gt; --registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 为单用户安装</span><br><span class="line">npm install --registry https://registry.npm.taobao.org &lt;package-name&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>为所有用户安装</span><br><span class="line">npm install --global --registry https://registry.npm.taobao.org &lt;package-name&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> yarn</span><br><span class="line">yarn save &lt;package-name&gt; --registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>默认使用</li>
@@ -818,6 +835,62 @@
 <li><a href="https://gitclub.cn/CocoaPods/Specs.git" target="_blank" rel="noopener">https://gitclub.cn/CocoaPods/Specs.git</a></li>
 <li><a href="http://git.oschina.net/akuandev/Specs.git" target="_blank" rel="noopener">http://git.oschina.net/akuandev/Specs.git</a></li>
 </ol>
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><blockquote>
+<p>以下内容摘自原仓库的说明文档，推荐优先参考原<a href="https://github.com/fastgh/fgit/blob/master/README.md" target="_blank" rel="noopener">文档</a>。</p>
+</blockquote>
+<p><a href="https://github.com/fastgh/fgit" target="_blank" rel="noopener">fgit</a>是一个可以无缝替换git命令行的工具，使用优化线路为使用github.com加速。</p>
+<p>官方介绍的特点：</p>
+<ul>
+<li>目前实测git clone速度超过15MB/S</li>
+<li>支持github.com私有库，也支持push</li>
+<li>两种工作模式：镜像（反向代理）模式和HTTP代理模式，都是实时连接github.com，不是缓存</li>
+<li>支持包括clone/push/pull/fetch在内的各种git命令，兼容git命令行参数，可以用来无缝替换git命令行</li>
+<li>只针对github.com加速，不干扰对非github.com库的使用</li>
+<li>使用go语言开发，不是shell脚本或.bat，跨平台。Windows 10、Linux (Unbuntu)、Mac (x86)都实测通过</li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
+<li>Mac</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L https://github.com/fastgh/fgit/releases/download/v1.0.0/fgit.darwin -o /usr/local/bin/fgit</span><br><span class="line">sudo chmod +x /usr/local/bin/fgit</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Linux</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L https://github.com/fastgh/fgit/releases/download/v1.0.0/fgit.linux -o /usr/local/bin/fgit</span><br><span class="line">sudo chmod +x /usr/local/bin/fgit</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ul>
+<li><p>和常规的git命令行几乎相同，支持各种命令行参数</p>
+</li>
+<li><p>对于公共库，clone/pull/fetch时默认使用镜像模式，基于安全考虑，镜像模式不支持push以及私有库</p>
+<p>  镜像模式例如：<code>fgit clone https://github.com/spring-projects/spring-boot.git --depth=1</code></p>
+</li>
+<li><p>两种情况会判定为需要push或者私有库，此时会使用HTTP代理模式，代理模式比镜像模式安全</p>
+<ol>
+<li><p>push</p>
+</li>
+<li><p>URL中包含用户名，那么会被判定为需要push或者私有库。<br> 对于clone命令，URL是从clone的URL中解析得到，对于其它git命令，则使用<code>git remote -v</code>得到</p>
+<p>代理模式例如：</p>
+</li>
+<li><p><code>fgit push origin master</code></p>
+</li>
+<li><p><code>fgit clone https://fastgh@github.com/fastgh/fgit.git</code></p>
+<p>也可以通过<code>--use-proxy</code>选项强制走HTTP代理模式，例如:</p>
+</li>
+<li><p><code>fgit --use-proxy clone https://github.com/fastgh/fgit.git</code></p>
+<p>代理服务器的优化线路成本高，所以大家尽量使用镜像模式，以节省服务器带宽资源</p>
+</li>
+</ol>
+</li>
+<li><p>其它功能：</p>
+<ol>
+<li><p>可以打开调试开关，看一看fgit的工作过程：下载服务器列表 –&gt; 设置镜像或代理 –&gt; 执行git –&gt; 回复镜像或代理</p>
+<p><code>fgit --debug clone https://github.com/fastgh/fgit.git</code></p>
+</li>
+<li><p>fgit首次运行时，会在用户主目录下生成一个配置文件.fgit.json，包含服务器地址等信息，必要时可以通过设置这个文件选择接入其它服务方，或指定镜像服务器或代理服务器</p>
+</li>
+</ol>
+</li>
+</ul>
 
       
     </div>
@@ -906,6 +979,15 @@
 
     <footer class="post-footer">
       
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/Untagged/" rel="tag"><i class="fa fa-tag"></i> Untagged</a>
+          
+        </div>
+      
 
       
       
@@ -959,8 +1041,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/08/speed-up-hyperledger-fabric-build-process/" rel="next" title="加速Hyperledger Fabric的docker镜像构建过程">
-                <i class="fa fa-chevron-left"></i> 加速Hyperledger Fabric的docker镜像构建过程
+              <a href="/2020/08/speed-up-hyperledger-fabric-build-process/" rel="next" title="加速 Hyperledger Fabric 的 Docker 镜像构建过程">
+                <i class="fa fa-chevron-left"></i> 加速 Hyperledger Fabric 的 Docker 镜像构建过程
               </a>
             
           </div>
@@ -968,6 +1050,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/12/java-hashcode-in-depth/" rel="prev" title="深入理解 Java hashcode">
+                深入理解 Java hashcode <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -1042,7 +1128,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1058,6 +1144,34 @@
                     
                   
                     
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
                     
                       
                     
@@ -1096,7 +1210,27 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1192,7 +1326,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker"><span class="nav-number">2.</span> <span class="nav-text">Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nodejs"><span class="nav-number">3.</span> <span class="nav-text">Nodejs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python"><span class="nav-number">4.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java"><span class="nav-number">5.</span> <span class="nav-text">Java</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Goproxy"><span class="nav-number">6.</span> <span class="nav-text">Goproxy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ruby"><span class="nav-number">7.</span> <span class="nav-text">Ruby</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Alpine-apk"><span class="nav-number">8.</span> <span class="nav-text">Alpine apk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Centos-yum"><span class="nav-number">9.</span> <span class="nav-text">Centos yum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Debian-apt"><span class="nav-number">10.</span> <span class="nav-text">Debian apt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu-apt"><span class="nav-number">11.</span> <span class="nav-text">Ubuntu apt</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ubuntu-16-04-配置如下"><span class="nav-number">11.1.</span> <span class="nav-text">ubuntu 16.04 配置如下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ubuntu-18-04-bionic-配置如下"><span class="nav-number">11.2.</span> <span class="nav-text">ubuntu 18.04(bionic) 配置如下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ubuntu-20-04-focal-配置如下"><span class="nav-number">11.3.</span> <span class="nav-text">ubuntu 20.04(focal) 配置如下</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homebrew"><span class="nav-number">12.</span> <span class="nav-text">Homebrew</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS"><span class="nav-number">13.</span> <span class="nav-text">iOS</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker"><span class="nav-number">2.</span> <span class="nav-text">Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nodejs"><span class="nav-number">3.</span> <span class="nav-text">Nodejs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python"><span class="nav-number">4.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java"><span class="nav-number">5.</span> <span class="nav-text">Java</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Goproxy"><span class="nav-number">6.</span> <span class="nav-text">Goproxy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ruby"><span class="nav-number">7.</span> <span class="nav-text">Ruby</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Alpine-apk"><span class="nav-number">8.</span> <span class="nav-text">Alpine apk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Centos-yum"><span class="nav-number">9.</span> <span class="nav-text">Centos yum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Debian-apt"><span class="nav-number">10.</span> <span class="nav-text">Debian apt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu-apt"><span class="nav-number">11.</span> <span class="nav-text">Ubuntu apt</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ubuntu-16-04-配置如下"><span class="nav-number">11.1.</span> <span class="nav-text">ubuntu 16.04 配置如下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ubuntu-18-04-bionic-配置如下"><span class="nav-number">11.2.</span> <span class="nav-text">ubuntu 18.04(bionic) 配置如下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ubuntu-20-04-focal-配置如下"><span class="nav-number">11.3.</span> <span class="nav-text">ubuntu 20.04(focal) 配置如下</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homebrew"><span class="nav-number">12.</span> <span class="nav-text">Homebrew</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS"><span class="nav-number">13.</span> <span class="nav-text">iOS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git"><span class="nav-number">14.</span> <span class="nav-text">Git</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">14.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">14.2.</span> <span class="nav-text">使用</span></a></li></ol></li></ol></div>
             
 
           </div>
