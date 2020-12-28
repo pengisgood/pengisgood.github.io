@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://codinglife.tech/2020/12/git-merge-commits/</loc>
+    
+    <lastmod>2020-12-28T09:38:16.844Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://codinglife.tech/tags/index.html</loc>
     
     <lastmod>2020-12-02T03:09:49.081Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>https://codinglife.tech/2019/09/java-virtual-machine-runtime-memory-layout/</loc>
     
     <lastmod>2020-12-02T03:05:15.727Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://codinglife.tech/2020/12/java-hashcode-in-depth/</loc>
-    
-    <lastmod>2020-12-02T03:05:09.593Z</lastmod>
     
   </url>
   

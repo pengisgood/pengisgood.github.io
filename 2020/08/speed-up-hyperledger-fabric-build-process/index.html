@@ -302,7 +302,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">17</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">11</span></a>
 
   </li>
         
@@ -320,7 +320,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">17</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">3</span></a>
 
   </li>
         
@@ -595,7 +595,7 @@
 <p><strong>注意</strong>：将<code>https://xxx.mirror.aliyuncs.com</code>替换成你自己的镜像加速器地址。再次提醒，配置完成后，<strong>重启</strong>docker之后才会生效。</p>
 <p>至此我们完成了docker pull镜像阶段的加速，接下来我们加速在Alpine中安装软件的过程。</p>
 <h2 id="加速Alpine安装软件的过程"><a href="#加速Alpine安装软件的过程" class="headerlink" title="加速Alpine安装软件的过程"></a>加速Alpine安装软件的过程</h2><p>在docker pull下来的Alpine镜像中，使用apk安装软件时默认使用的是国外的源，速度比较慢。这里我们把源替换为国内的源，可以大大节省时间。下面以Hyperledger fabric peer的<a href="https://github.com/hyperledger/fabric/blob/master/images/peer/Dockerfile" target="_blank" rel="noopener">Dockerfile</a>为例，替换为阿里的源：</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> alpine:$&#123;ALPINE_VER&#125; as peer-base</span><br><span class="line"><span class="comment"># 使用下面这行命令完成源的替换</span></span><br><span class="line"><span class="keyword">RUN</span> sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories</span><br><span class="line"><span class="keyword">RUN</span> apk add --no-cache tzdata</span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> golang:$&#123;GO_VER&#125;-alpine$&#123;ALPINE_VER&#125; as golang</span><br><span class="line"><span class="comment"># 使用下面这行命令完成源的替换</span></span><br><span class="line"><span class="keyword">RUN</span> sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories</span><br><span class="line"><span class="keyword">RUN</span> apk add --no-cache \</span><br><span class="line">	bash \</span><br><span class="line">	gcc \</span><br><span class="line">	git \</span><br><span class="line">	make \</span><br><span class="line">	musl-dev</span><br><span class="line"><span class="keyword">ADD</span> . $GOPATH/src/github.com/hyperledger/fabric</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> alpine:$&#123;ALPINE_VER&#125; as peer-base</span><br><span class="line"><span class="comment"># 使用下面这行命令完成源的替换</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> sed -i <span class="string">'s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g'</span> /etc/apk/repositories</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> apk add --no-cache tzdata</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> golang:$&#123;GO_VER&#125;-alpine$&#123;ALPINE_VER&#125; as golang</span><br><span class="line"><span class="comment"># 使用下面这行命令完成源的替换</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> sed -i <span class="string">'s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g'</span> /etc/apk/repositories</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> apk add --no-cache \</span></span><br><span class="line"><span class="bash">	bash \</span></span><br><span class="line"><span class="bash">	gcc \</span></span><br><span class="line"><span class="bash">	git \</span></span><br><span class="line"><span class="bash">	make \</span></span><br><span class="line"><span class="bash">	musl-dev</span></span><br><span class="line"><span class="keyword">ADD</span><span class="bash"> . <span class="variable">$GOPATH</span>/src/github.com/hyperledger/fabric</span></span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
 <p>另外也可以替换为中科大的源：dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn，或者清华的源：dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn，或者其他的源。</p>
 <p><strong>注意</strong>：这里对于使用multi-stage的Dockerfile，如果不同的stage使用的是不同的基础镜像，则都需要替换源。</p>
@@ -864,34 +864,6 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
                     <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
@@ -931,19 +903,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
